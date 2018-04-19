@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PomoClock from './PomoClock';
+import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<PomoClock work="25" break="5" cycles="1"/>, document.getElementById('root'));
+ReactDOM.render(<App work="25" break="5" cycles="1"/>, document.getElementById('root'));
 registerServiceWorker();
