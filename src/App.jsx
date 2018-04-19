@@ -5,10 +5,11 @@
  * props.break: default break time in minutes
  * props.cycles: default cycles
  */
-import React, { Component } from 'react';
+import React from 'react';
 import MinuteInput from './MinuteInput';
-import PomoTimer from './PomoTimer';
+import Timer from './Timer';
 import './App.css';
+import { buttons, forms } from 'pure-css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -47,43 +48,39 @@ class App extends React.Component {
 	}
 
 	settings() {
-		return <div id="settings">
-			<fieldset>
-				<div class="input-line">
-					<label htmlFor='work'>Work
+		return <div>
+			<form className='pure-form pure-form-aligned'>
+				<fieldset> 
+					<div className='pure-control-group'>
+						<label htmlFor='work'>Work</label>
 						<MinuteInput id='work' name='work'
 							value={this.state.work}
 							onChange={this.handleWorkChange} />
-					</label>
-				</div>
-				<br/>
-				<div class="input-line">
-					<label htmlFor='break'>Break
+					</div>
+					<div className='pure-control-group'>
+						<label htmlFor='break'>Break</label>
 						<MinuteInput id='break' name='break' type='text'
 							value={this.state.break}
 							onChange={this.handleBreakChange} />
-					</label>
-				</div>
-				<br/>
-				<div class="input-line">
-					<label htmlFor='cycles'>Cycles
-						<input id='cycles' class='setting' name='cycles' type='text'
+					</div>
+					<div className='pure-control-group'>
+						<label htmlFor='cycles'>Cycles</label>
+						<input id='cycles' name='cycles' type='text'
 							value={this.state.cycles}
 							onChange={this.handleCyclesChange} />
-					</label>
-				</div>
-				<br/>
-				<div class="input-line">
-					<button onClick={this.handleStart}>
-						Start
-					</button>
-				</div>
-			</fieldset>
+					</div>
+					<div className='pure-controls'>
+						<button onClick={this.handleStart} className='pure-button pure-button-primary'>
+							Start
+						</button>
+					</div>
+				</fieldset>
+			</form>
 		</div>
 	}
 
 	clock() {
-		return <PomoTimer id="timer"
+		return <Timer
 			work={this.state.work}
 			break={this.state.break}
 			cycles={this.state.cycles} />

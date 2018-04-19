@@ -1,18 +1,15 @@
-.setting {
-	float: right;
-	width: 50px;
+.pure-g {
+	justify-content: center;
 }
-
-button {
-	float: right;
-	width: 58px;
+form {
+	position: absolute;
+	left: 15%;
+	top: 30%;
+	transform: translate(-50%, -50%);
+	width: 40%;
+	height: 50%;
+	padding: 20px;  
 }
-
 label {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 0 auto;
-	max-width: 370px;
-	height: 30px;
+	text-align: left;
 }

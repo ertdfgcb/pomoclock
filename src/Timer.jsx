@@ -8,9 +8,9 @@
  */
 import React, { Component } from 'react';
 import CircularProgressbar from 'react-circular-progressbar';
-import './PomoTimer.css';
+import './Timer.css';
 
-class PomoTimer extends React.Component {
+class Timer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -59,9 +59,10 @@ class PomoTimer extends React.Component {
 		return <div>
 			<CircularProgressbar
 				percentage={100*pct}
+				counterClockwise='true'
 				textForPercentage={(pct) => {return phase}}/>
 		</div>;
 	}
 }
 
-export default PomoTimer;
+export default Timer;

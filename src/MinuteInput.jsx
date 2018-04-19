@@ -23,7 +23,6 @@ class MinuteInput extends React.Component {
 	render() {
 		return <input 
 			type="text"
-			class="setting"
 			id={this.props.id}
 			name={this.props.name}
 			value={this.state.value/60}
