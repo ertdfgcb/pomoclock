@@ -7,6 +7,8 @@
  * props.handleFinish: hook called when all cycles are done
  */
 import React, { Component } from 'react';
+import CircularProgressbar from 'react-circular-progressbar';
+import './PomoTimer.css';
 
 class PomoTimer extends React.Component {
 	constructor(props) {
@@ -52,13 +54,12 @@ class PomoTimer extends React.Component {
 	render() {
 		const working = this.state.counter > this.state.break;
 		const count = this.state.counter - (working ? this.state.break : 0);
-		const min = parseInt(count / 60);
-		const sec = ("0" + parseInt(count % 60)).slice(-2);
+		const pct = count / (working ? this.state.work : this.state.break);
 		const phase = working ? 'Work' : 'Break';
 		return <div>
-			<h3>Cycles left: {this.state.cycle}</h3>
-			<h1>{phase}</h1>
-			<h2>{0 == min ? sec : min + ':' + sec}</h2>
+			<CircularProgressbar
+				percentage={100*pct}
+				textForPercentage={(pct) => {return phase}}/>
 		</div>;
 	}
 }
