@@ -1,7 +1,7 @@
 {
   "name": "pomo-clock",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "pure-css": "^1.0.4",
     "react": "^16.3.2",
