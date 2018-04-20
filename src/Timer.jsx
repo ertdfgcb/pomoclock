@@ -22,14 +22,15 @@ class Timer extends React.Component {
     }
 
 	componentDidMount() {
-		this.startCycle();
+		this.startNextCycle();
 	}
 
-	startCycle() {
+	startNextCycle() {
 		this.timerID = setInterval(() => this.tick(), 1000);
 		this.setState(prevState => ({
 			started: true,
-			counter: parseInt(prevState.work) + parseInt(prevState.break)
+			counter: parseInt(prevState.work) + parseInt(prevState.break),
+			cycle: prevState.cycle - 1
 		}));
 	}
  
@@ -39,10 +40,7 @@ class Timer extends React.Component {
 			if(0 == this.state.cycle) {
 				this.props.handleFinish();
 			} else {
-				this.setState((prevState, props) => ({
-					cycle: prevState.cycle - 1
-				}));
-				this.startCycle();
+				this.startNextCycle();
 			}
 		} else {
 			this.setState((prevState, props) => ({
@@ -56,8 +54,13 @@ class Timer extends React.Component {
 		const count = this.state.counter - (working ? this.state.break : 0);
 		const pct = count / (working ? this.state.work : this.state.break);
 		const phase = working ? 'Work' : 'Break';
+		const color = working ? '#ff9100' : '#00b0ff';
 		return <div>
 			<CircularProgressbar
+				styles={{
+					path: {stroke: color},
+					text: {fill:color}
+				}}
 				percentage={100*pct}
 				counterClockwise='true'
 				textForPercentage={(pct) => {return phase}}/>

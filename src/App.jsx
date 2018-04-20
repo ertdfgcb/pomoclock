@@ -8,8 +8,8 @@
 import React from 'react';
 import MinuteInput from './MinuteInput';
 import Timer from './Timer';
-import './App.css';
 import { buttons, forms } from 'pure-css';
+import './App.css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -70,7 +70,7 @@ class App extends React.Component {
 							onChange={this.handleCyclesChange} />
 					</div>
 					<div className='pure-controls'>
-						<button onClick={this.handleStart} className='pure-button pure-button-primary'>
+						<button onClick={this.handleStart} className='pure-button pure-button-primary start-button'>
 							Start
 						</button>
 					</div>
