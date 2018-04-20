@@ -8,6 +8,7 @@
  */
 import React, { Component } from 'react';
 import CircularProgressbar from 'react-circular-progressbar';
+import Favicon from 'react-favicon';
 import './Timer.css';
 
 class Timer extends React.Component {
@@ -38,7 +39,7 @@ class Timer extends React.Component {
 		if(0 == this.state.counter) {
 			clearInterval(this.timerID);
 			if(0 == this.state.cycle) {
-				this.props.handleFinish();
+				this.props.handleTimerFinished();
 			} else {
 				this.startNextCycle();
 			}
@@ -50,12 +51,16 @@ class Timer extends React.Component {
 	}
   
 	render() {
-		const working = this.state.counter > this.state.break;
+		const working = this.state.counter >= this.state.break;
 		const count = this.state.counter - (working ? this.state.break : 0);
 		const pct = count / (working ? this.state.work : this.state.break);
 		const phase = working ? 'Work' : 'Break';
 		const color = working ? '#ff9100' : '#00b0ff';
+		const sec = ("0" + parseInt(count % 60)).slice(-2);;
+		const min = count / 60;
+		document.title = `${parseInt(min)}:${sec} - ${phase}`;
 		return <div>
+			<Favicon url={`http://oday.io/pomoclock/${phase}.ico`}/>
 			<CircularProgressbar
 				styles={{
 					path: {stroke: color},

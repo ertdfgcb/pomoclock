@@ -1,15 +1,42 @@
-.start-button{
-	background-color: #ff9100;
+fieldset {
+	border:0;
 }
+
+.control-group {
+	overflow: hidden;
+	margin: 20px 0 20px 0;
+}
+
+#start-button{
+	font-size: 60pt;
+	background-color: #fff;
+	border: 0px;
+	color: #ff9100;
+	padding: 0;
+	line-height: 1;
+}
+
 form {
-	position: absolute;
-	left: 15%;
-	top: 30%;
-	transform: translate(-50%, -50%);
-	width: 40%;
-	height: 50%;
-	padding: 20px;  
+	width: 50%;
+	height: 100%;
+	margin: auto;
 }
+
 label {
-	text-align: left;
+	float: left;
+	vertical-align: baseline;
+	font-size: 60pt;
+	font-family: monospace;
 }
+
+#work, #break, #cycles{
+	float: right;
+	font-family: monospace;
+	vertical-align: baseline;
+	font-size: 60pt;
+	width: 2ch;
+	border: 0;
+	border-bottom: 7px solid #000;
+	outline: 0;
+}
+

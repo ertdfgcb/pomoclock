@@ -8,7 +8,6 @@
 import React from 'react';
 import MinuteInput from './MinuteInput';
 import Timer from './Timer';
-import { buttons, forms } from 'pure-css';
 import './App.css';
 
 class App extends React.Component {
@@ -49,28 +48,28 @@ class App extends React.Component {
 
 	settings() {
 		return <div>
-			<form className='pure-form pure-form-aligned'>
+			<form >
 				<fieldset> 
-					<div className='pure-control-group'>
-						<label htmlFor='work'>Work</label>
+					<div className='control-group'>
+						<label id='work-label' htmlFor='work'>Work:</label>
 						<MinuteInput id='work' name='work'
 							value={this.state.work}
 							onChange={this.handleWorkChange} />
 					</div>
-					<div className='pure-control-group'>
-						<label htmlFor='break'>Break</label>
+					<div className='control-group'>
+						<label id='break-label' htmlFor='break'>Break:</label>
 						<MinuteInput id='break' name='break' type='text'
 							value={this.state.break}
 							onChange={this.handleBreakChange} />
 					</div>
-					<div className='pure-control-group'>
-						<label htmlFor='cycles'>Cycles</label>
+					<div className='control-group'>
+						<label id='cycles-label' htmlFor='cycles'>Cycles:</label>
 						<input id='cycles' name='cycles' type='text'
 							value={this.state.cycles}
 							onChange={this.handleCyclesChange} />
 					</div>
-					<div className='pure-controls'>
-						<button onClick={this.handleStart} className='pure-button pure-button-primary start-button'>
+					<div className='control'>
+						<button id='start-button' onClick={this.handleStart}>
 							Start
 						</button>
 					</div>
@@ -83,11 +82,13 @@ class App extends React.Component {
 		return <Timer
 			work={this.state.work}
 			break={this.state.break}
-			cycles={this.state.cycles} />
+			cycles={this.state.cycles}
+			handleTimerFinished={this.handleTimerFinished}/>
 	}
 
 	render() {
 		const started = this.state.started;
+		document.title = "Pomodoro Clock";
 		return this.state.started ? this.clock() : this.settings();
 	}
 }
